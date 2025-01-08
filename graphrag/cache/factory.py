@@ -53,6 +53,8 @@ class CacheFactory:
                     FilePipelineStorage(root_dir=root_dir).child(kwargs["base_dir"])
                 )
             case CacheType.blob:
+                kwargs.pop("base_dir")
+                kwargs.pop('type')
                 return JsonPipelineCache(create_blob_storage(**kwargs))
             case CacheType.cosmosdb:
                 return JsonPipelineCache(create_cosmosdb_storage(**kwargs))
