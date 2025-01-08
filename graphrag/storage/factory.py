@@ -40,6 +40,7 @@ class StorageFactory:
         """Create or get a storage object from the provided type."""
         match storage_type:
             case StorageType.blob:
+                kwargs.pop('type')
                 return create_blob_storage(**kwargs)
             case StorageType.cosmosdb:
                 return create_cosmosdb_storage(**kwargs)
